@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rooms/login.dart';
+
+import 'package:flutter_rooms/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const Login(),
+      home: const SplashScreen(),
     );
   }
 }
