@@ -14,9 +14,13 @@ class _StudentState extends State<Student> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Student Screen'),
+        // automaticallyImplyLeading: false,
+        title: const Text(
+          'Student Screen',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.black,
       ),
       body: Column(children: [
         Padding(
@@ -27,7 +31,7 @@ class _StudentState extends State<Student> {
               //this is a future function that is why async and await key words are used.
               SharedPreferences sp = await SharedPreferences.getInstance();
 
-              sp.setBool('isLogin', true);
+              sp.setBool('isLogin', false);
               // ignore: use_build_context_synchronously
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const Login()));
@@ -41,8 +45,10 @@ class _StudentState extends State<Student> {
             child: Container(
                 height: 50,
                 width: double.infinity,
-                color: Colors.amber,
-                child: const Center(child: Text('LogOut'))),
+                color: Colors.black,
+                child: const Center(
+                    child:
+                        Text('Logout', style: TextStyle(color: Colors.white)))),
           ),
         )
       ]),

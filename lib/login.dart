@@ -19,9 +19,13 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        // automaticallyImplyLeading: false,
+        title: const Text(
+          'Login',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.amber[300],
+        backgroundColor: Colors.black,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -80,8 +84,12 @@ class _LoginState extends State<Login> {
               child: Container(
                   height: 50,
                   width: double.infinity,
-                  color: Colors.amber,
-                  child: const Center(child: Text('Login'))),
+                  color: Colors.black,
+                  child: const Center(
+                      child: Text(
+                    'Login',
+                    style: TextStyle(color: Colors.white),
+                  ))),
             )
           ],
         ),
