@@ -14,7 +14,7 @@ class _StudentState extends State<Student> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
         title: const Text(
           'Student Screen',
           style: TextStyle(color: Colors.white),

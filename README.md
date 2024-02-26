@@ -1,12 +1,10 @@
 # flutter_rooms
 
-A new Flutter project.
+This is a multi role base app which have multiple types of user's
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
+in this project i have managed user session and user type since it have multiple types of user's.
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
