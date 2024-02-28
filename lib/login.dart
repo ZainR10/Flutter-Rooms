@@ -33,63 +33,94 @@ class _LoginState extends State<Login> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            TextFormField(
-              //email
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Email',
+            Form(
+              key: formData,
+              child: Column(
+                children: [
+                  //******email*****
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Email',
+                    ),
+                    controller: emailController,
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Email field cannot be empty";
+                      }
+                      if (!value.contains('@') || !value.contains('.com')) {
+                        return "Invalid email address";
+                      }
+                      return null;
+                    },
+                  ),
+
+                  //age
+                  const SizedBox(height: 40),
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Age',
+                    ),
+                    keyboardType: TextInputType.number,
+                    controller: ageController,
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Enter your Age";
+                      }
+                      if (value.contains('@') || value.contains('.com')) {
+                        return "Invalid email address";
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 40),
+                  //password
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Password',
+                    ),
+                    controller: passwordController,
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Password field cannot be empty";
+                      }
+                      if (value.length <= 8) {
+                        return "Password length must be greater than 8";
+                      }
+                      return null;
+                    },
+                  ),
+                ],
               ),
-              controller: emailController,
             ),
-            const SizedBox(height: 10),
-            TextFormField(
-              //age
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Age',
-              ),
-              keyboardType: TextInputType.number,
-              controller: ageController,
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              //password
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Password',
-              ),
-              controller: passwordController,
-            ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 50),
             InkWell(
               onTap: () async {
-                //this is how you initialize shared preferences.
-                //this is a future function that is why async and await key words are used.
+                // Store the context in a local variable
+                BuildContext localContext = context;
                 SharedPreferences sp = await SharedPreferences.getInstance();
-                //to set/store name or any other value in string.
                 sp.setString('email', emailController.text.toString());
-                //to set/store age or any other value in integer.
                 sp.setString('age', ageController.text.toString());
                 sp.setBool('isLogin', true);
-                // ignore: use_build_context_synchronously
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Student()));
-                // sp.remove('name');
-
-                // print(sp.getInt('age')); //to check stored value.
-                // print(sp.remove('name'));
-                // print(sp.getString('name'));
-                // print(sp.getBool('isLogin').toString());
+                // Use the localContext instead of context
+                if (formData.currentState!.validate()) {
+                  Navigator.push(localContext,
+                      MaterialPageRoute(builder: (context) => const Student()));
+                }
               },
               child: Container(
-                  height: 50,
-                  width: double.infinity,
-                  color: Colors.black,
-                  child: const Center(
-                      child: Text(
+                height: 50,
+                width: double.infinity,
+                color: Colors.black,
+                child: const Center(
+                  child: Text(
                     'Login',
                     style: TextStyle(color: Colors.white),
-                  ))),
+                  ),
+                ),
+              ),
             )
           ],
         ),

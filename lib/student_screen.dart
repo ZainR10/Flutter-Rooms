@@ -10,6 +10,21 @@ class Student extends StatefulWidget {
 }
 
 class _StudentState extends State<Student> {
+  String email = '', age = '';
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    email = sp.getString('email') ?? '';
+    age = sp.getString('age') ?? '';
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,6 +38,21 @@ class _StudentState extends State<Student> {
         backgroundColor: Colors.black,
       ),
       body: Column(children: [
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [const Text('Email:'), Text(email.toString())],
+          ),
+        ),
+        const SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [const Text('Email:'), Text(email.toString())],
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.all(100),
           child: InkWell(
@@ -50,7 +80,7 @@ class _StudentState extends State<Student> {
                     child:
                         Text('Logout', style: TextStyle(color: Colors.white)))),
           ),
-        )
+        ),
       ]),
     );
   }
