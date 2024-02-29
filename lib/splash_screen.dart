@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'login.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key); // Fixed constructor syntax
+  const SplashScreen({super.key}); // Fixed constructor syntax
 
   @override
   // ignore: library_private_types_in_public_api
