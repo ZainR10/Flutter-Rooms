@@ -27,6 +27,15 @@ class _LoginState extends State<Login> {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          const Text(
+            "Let's get started",
+            style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 5),
+          const Text(
+            "Enter your detail's to continue",
+            style: TextStyle(fontSize: 12),
+          ),
           Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
