@@ -20,9 +20,10 @@ class _StudentState extends State<Student> {
 
   loadData() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
-    email = sp.getString('email') ?? '';
-    age = sp.getString('age') ?? '';
-    setState(() {});
+    setState(() {
+      email = sp.getString('email') ?? '';
+      age = sp.getString('age') ?? '';
+    });
   }
 
   @override

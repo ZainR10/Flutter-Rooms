@@ -12,9 +12,12 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final formData = GlobalKey<FormState>();
 
+  final nameController = TextEditingController();
   final emailController = TextEditingController();
   final ageController = TextEditingController();
   final passwordController = TextEditingController();
+
+  String? selectedGender;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,11 +40,34 @@ class _LoginState extends State<Login> {
               key: formData,
               child: Column(
                 children: [
+                  //****name*****
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter your Name',
+                    ),
+                    controller: nameController,
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Name field cannot be empty";
+                      }
+
+                      if (value.contains('@') || value.contains('.com')) {
+                        return "Invalid Name";
+                      }
+                      // Check if the string contains an integer using a regular expression
+                      if (RegExp(r'\d').hasMatch(value)) {
+                        return 'Try removing integer';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 30),
                   //******email*****
                   TextFormField(
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Email',
+                      hintText: 'Enter your Email',
                     ),
                     controller: emailController,
                     validator: (String? value) {
@@ -55,12 +81,12 @@ class _LoginState extends State<Login> {
                     },
                   ),
 
-                  //age
-                  const SizedBox(height: 40),
+                  //****age*****
+                  const SizedBox(height: 30),
                   TextFormField(
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Age',
+                      hintText: 'Enter your Age',
                     ),
                     keyboardType: TextInputType.number,
                     controller: ageController,
@@ -74,12 +100,39 @@ class _LoginState extends State<Login> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
+                  // Gender dropdown
+                  DropdownButtonFormField<String>(
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Please select your Gender',
+                    ),
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please select gender';
+                      }
+                      return null;
+                    },
+                    value: selectedGender,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        selectedGender = newValue;
+                      });
+                    },
+                    items: <String>['Male', 'Female']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                  const SizedBox(height: 30),
                   //password
                   TextFormField(
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Password',
+                      hintText: 'Enter your Password',
                     ),
                     controller: passwordController,
                     validator: (String? value) {
@@ -95,29 +148,30 @@ class _LoginState extends State<Login> {
                 ],
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 30),
             InkWell(
               onTap: () async {
-                // Store the context in a local variable
-                BuildContext localContext = context;
                 SharedPreferences sp = await SharedPreferences.getInstance();
                 sp.setString('email', emailController.text.toString());
                 sp.setString('age', ageController.text.toString());
                 sp.setBool('isLogin', true);
-                // Use the localContext instead of context
+
                 if (formData.currentState!.validate()) {
-                  Navigator.push(localContext,
+                  Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const Student()));
                 }
               },
               child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.black),
                 height: 50,
                 width: double.infinity,
-                color: Colors.black,
+                // color: Colors.black,
                 child: const Center(
                   child: Text(
                     'Login',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                 ),
               ),
