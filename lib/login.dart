@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter/widgets.dart';
 // import 'package:flutter/rendering.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:flutter_rooms/student_screen.dart';
@@ -23,25 +24,38 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(60, 214, 211, 211),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text(
-            "Let's get started",
-            style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 90, right: 90),
+            child: RichText(
+              text: const TextSpan(
+                children: [
+                  TextSpan(
+                    text: "Let's get started\n",
+                    style: TextStyle(
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  TextSpan(
+                    text: "Enter your details to continue.",
+                    style: TextStyle(fontSize: 15, color: Colors.black),
+                  ),
+                ],
+              ),
+            ),
           ),
           const SizedBox(height: 5),
-          const Text(
-            "Enter your detail's to continue",
-            style: TextStyle(fontSize: 12),
-          ),
           Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(50),
                     topRight: Radius.circular(50)),
-                color: Colors.amberAccent),
+                color: Colors.black),
             child: Column(
               children: [
                 Padding(
@@ -53,9 +67,12 @@ class _LoginState extends State<Login> {
                         //****name*****
                         TextFormField(
                           decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter your Name',
-                          ),
+                              fillColor: Colors.amber,
+                              border: OutlineInputBorder(),
+                              hintText: 'Enter your Name',
+                              hintStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.normal)),
                           controller: nameController,
                           validator: (String? value) {
                             if (value == null || value.isEmpty) {
@@ -183,7 +200,7 @@ class _LoginState extends State<Login> {
                     child: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.black),
+                          color: Colors.indigo),
                       height: 50,
                       width: double.infinity,
                       // color: Colors.black,
