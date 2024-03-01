@@ -10,7 +10,7 @@ class Student extends StatefulWidget {
 }
 
 class _StudentState extends State<Student> {
-  String email = '', age = '';
+  String name = '', email = '', age = '', gender = '';
   @override
   void initState() {
     // TODO: implement initState
@@ -21,8 +21,10 @@ class _StudentState extends State<Student> {
   loadData() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     setState(() {
+      name = sp.getString('name') ?? '';
       email = sp.getString('email') ?? '';
       age = sp.getString('age') ?? '';
+      gender = sp.getString('gender') ?? '';
     });
   }
 
@@ -39,6 +41,16 @@ class _StudentState extends State<Student> {
         backgroundColor: Colors.black,
       ),
       body: Column(children: [
+        //***name***
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [const Text('Name:'), Text(name.toString())],
+          ),
+        ),
+        const SizedBox(height: 10),
+        //***email ***
         Padding(
           padding: const EdgeInsets.all(20),
           child: Row(
@@ -47,11 +59,21 @@ class _StudentState extends State<Student> {
           ),
         ),
         const SizedBox(height: 10),
+        //***age ***
         Padding(
           padding: const EdgeInsets.all(20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [const Text('Email:'), Text(email.toString())],
+            children: [const Text('Age:'), Text(age.toString())],
+          ),
+        ),
+        const SizedBox(height: 10),
+        //***gender ***
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [const Text('Gender:'), Text(gender.toString())],
           ),
         ),
         Padding(

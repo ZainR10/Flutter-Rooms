@@ -156,7 +156,9 @@ class _LoginState extends State<Login> {
                   onTap: () async {
                     SharedPreferences sp =
                         await SharedPreferences.getInstance();
+                    sp.setString('name', nameController.text.toString());
                     sp.setString('email', emailController.text.toString());
+                    sp.setString('gender', selectedGender.toString());
                     sp.setString('age', ageController.text.toString());
                     sp.setBool('isLogin', true);
 
