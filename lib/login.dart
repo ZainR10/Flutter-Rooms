@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 // import 'package:flutter/widgets.dart';
 // import 'package:flutter/rendering.dart';
 // import 'package:flutter/widgets.dart';
-import 'package:flutter_rooms/student_screen.dart';
+import 'package:flutter_rooms/info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
@@ -24,13 +25,13 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(60, 214, 211, 211),
+      // backgroundColor: const Colors.white(60, 214, 211, 211),
+      backgroundColor: Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 90, right: 90),
+          Center(
             child: RichText(
               text: const TextSpan(
                 children: [
@@ -50,170 +51,174 @@ class _LoginState extends State<Login> {
             ),
           ),
           const SizedBox(height: 5),
-          Container(
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(50),
-                    topRight: Radius.circular(50)),
-                color: Colors.black),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(25),
-                  child: Form(
-                    key: formData,
-                    child: Column(
-                      children: [
-                        //****name*****
-                        TextFormField(
-                          decoration: const InputDecoration(
-                              fillColor: Colors.amber,
+          SingleChildScrollView(
+            child: Container(
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50)),
+                  color: Colors.black),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(25),
+                    child: Form(
+                      key: formData,
+                      child: Column(
+                        children: [
+                          //****name*****
+                          Container(
+                            child: TextFormField(
+                              decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  hintText: 'Enter your Name',
+                                  hintStyle:
+                                      TextStyle(fontWeight: FontWeight.normal)),
+                              controller: nameController,
+                              validator: (String? value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Name field cannot be empty";
+                                }
+
+                                if (value.contains('@') ||
+                                    value.contains('.com')) {
+                                  return "Invalid Name";
+                                }
+                                // Check if the string contains an integer using a regular expression
+                                if (RegExp(r'\d').hasMatch(value)) {
+                                  return 'Try removing integer';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          //******email*****
+                          TextFormField(
+                            decoration: const InputDecoration(
                               border: OutlineInputBorder(),
-                              hintText: 'Enter your Name',
-                              hintStyle: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.normal)),
-                          controller: nameController,
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return "Name field cannot be empty";
-                            }
+                              hintText: 'Enter your Email',
+                            ),
+                            controller: emailController,
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return "Email field cannot be empty";
+                              }
+                              if (!value.contains('@') ||
+                                  !value.contains('.com')) {
+                                return "Invalid email address";
+                              }
+                              return null;
+                            },
+                          ),
 
-                            if (value.contains('@') || value.contains('.com')) {
-                              return "Invalid Name";
-                            }
-                            // Check if the string contains an integer using a regular expression
-                            if (RegExp(r'\d').hasMatch(value)) {
-                              return 'Try removing integer';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 30),
-                        //******email*****
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter your Email',
+                          //****age*****
+                          const SizedBox(height: 30),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Enter your Age',
+                            ),
+                            keyboardType: TextInputType.number,
+                            controller: ageController,
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return "Enter your Age";
+                              }
+                              if (value.contains('@') ||
+                                  value.contains('.com')) {
+                                return "Invalid email address";
+                              }
+                              return null;
+                            },
                           ),
-                          controller: emailController,
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return "Email field cannot be empty";
-                            }
-                            if (!value.contains('@') ||
-                                !value.contains('.com')) {
-                              return "Invalid email address";
-                            }
-                            return null;
-                          },
-                        ),
-
-                        //****age*****
-                        const SizedBox(height: 30),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter your Age',
+                          const SizedBox(height: 30),
+                          // Gender dropdown
+                          DropdownButtonFormField<String>(
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Please select your Gender',
+                            ),
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please select gender';
+                              }
+                              return null;
+                            },
+                            value: selectedGender,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                selectedGender = newValue;
+                              });
+                            },
+                            items: <String>['Male', 'Female']
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
                           ),
-                          keyboardType: TextInputType.number,
-                          controller: ageController,
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return "Enter your Age";
-                            }
-                            if (value.contains('@') || value.contains('.com')) {
-                              return "Invalid email address";
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 30),
-                        // Gender dropdown
-                        DropdownButtonFormField<String>(
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Please select your Gender',
+                          const SizedBox(height: 30),
+                          //password
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Enter your Password',
+                            ),
+                            controller: passwordController,
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return "Password field cannot be empty";
+                              }
+                              if (value.length <= 8) {
+                                return "Password length must be greater than 8";
+                              }
+                              return null;
+                            },
                           ),
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please select gender';
-                            }
-                            return null;
-                          },
-                          value: selectedGender,
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              selectedGender = newValue;
-                            });
-                          },
-                          items: <String>['Male', 'Female']
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                        ),
-                        const SizedBox(height: 30),
-                        //password
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter your Password',
-                          ),
-                          controller: passwordController,
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return "Password field cannot be empty";
-                            }
-                            if (value.length <= 8) {
-                              return "Password length must be greater than 8";
-                            }
-                            return null;
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 5),
-                InkWell(
-                  onTap: () async {
-                    SharedPreferences sp =
-                        await SharedPreferences.getInstance();
-                    sp.setString('name', nameController.text.toString());
-                    sp.setString('email', emailController.text.toString());
-                    sp.setString('gender', selectedGender.toString());
-                    sp.setString('age', ageController.text.toString());
-                    sp.setBool('isLogin', true);
-
-                    if (formData.currentState!.validate()) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Student()));
-                    }
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.indigo),
-                      height: 50,
-                      width: double.infinity,
-                      // color: Colors.black,
-                      child: const Center(
-                        child: Text(
-                          'Login',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
+                        ],
                       ),
                     ),
                   ),
-                )
-              ],
+                  const SizedBox(height: 5),
+                  InkWell(
+                    onTap: () async {
+                      SharedPreferences sp =
+                          await SharedPreferences.getInstance();
+                      sp.setString('name', nameController.text.toString());
+                      sp.setString('email', emailController.text.toString());
+                      sp.setString('gender', selectedGender.toString());
+                      sp.setString('age', ageController.text.toString());
+                      sp.setBool('isLogin', true);
+
+                      if (formData.currentState!.validate()) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Info()));
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.indigo),
+                        height: 50,
+                        width: double.infinity,
+                        // color: Colors.black,
+                        child: const Center(
+                          child: Text(
+                            'Login',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ],

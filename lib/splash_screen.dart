@@ -1,7 +1,7 @@
 import 'dart:async'; // Added import for Timer
 
 import 'package:flutter/material.dart';
-import 'student_screen.dart';
+import 'info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'login.dart';
 
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (isLogin) {
       Timer(const Duration(seconds: 6), () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Student()));
+            context, MaterialPageRoute(builder: (context) => const Info()));
       });
     } else {
       Timer(const Duration(seconds: 6), () {
