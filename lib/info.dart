@@ -161,7 +161,7 @@ class _InfoState extends State<Info> {
             },
             child: Container(
                 height: 50,
-                width: 100,
+                width: 150,
                 decoration: BoxDecoration(
                     color: Colors.indigo,
                     borderRadius: BorderRadius.circular(30)),
