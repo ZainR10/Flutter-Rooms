@@ -192,21 +192,44 @@ class _LoginState extends State<Login> {
                 const SizedBox(height: 5),
                 InkWell(
                   onTap: () async {
-                    SharedPreferences sp =
-                        await SharedPreferences.getInstance();
-                    sp.setString('name', nameController.text.toString());
-                    sp.setString('email', emailController.text.toString());
-                    sp.setString('gender', selectedGender.toString());
-                    sp.setString('age', ageController.text.toString());
-                    sp.setBool('isLogin', true);
-
                     if (formData.currentState!.validate()) {
-                      Navigator.push(
+                      // Login logic (replace with your actual authentication)
+                      // For demonstration purposes, assuming successful login
+                      bool isLoginSuccessful = true; // Replace with your logic
+
+                      if (isLoginSuccessful) {
+                        SharedPreferences sp =
+                            await SharedPreferences.getInstance();
+                        sp.setString('name', nameController.text.toString());
+                        sp.setString('email', emailController.text.toString());
+                        sp.setString('gender', selectedGender.toString());
+                        sp.setString('age', ageController.text.toString());
+                        sp.setBool('isLogin', true); // Set login status to true
+
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const Info()));
+                            builder: (context) => const Info(),
+                          ),
+                        );
+                      }
                     }
                   },
+                  // SharedPreferences sp =
+                  //     await SharedPreferences.getInstance();
+                  // sp.setString('name', nameController.text.toString());
+                  // sp.setString('email', emailController.text.toString());
+                  // sp.setString('gender', selectedGender.toString());
+                  // sp.setString('age', ageController.text.toString());
+                  // sp.setBool('isLogin', true);
+
+                  //   if (formData.currentState!.validate()) {
+                  //     Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => const Info()));
+                  //   }
+                  // },
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: Container(
