@@ -192,10 +192,14 @@ class _LoginState extends State<Login> {
                 const SizedBox(height: 5),
                 InkWell(
                   onTap: () async {
+                    /**  Login logic (if form is validted it will navigate and will return 
+                      navigated screen even after restarting app and if not validated 
+                      it will return login screen.
+                      )
+                    
+                    **/
                     if (formData.currentState!.validate()) {
-                      // Login logic (replace with your actual authentication)
-                      // For demonstration purposes, assuming successful login
-                      bool isLoginSuccessful = true; // Replace with your logic
+                      bool isLoginSuccessful = true;
 
                       if (isLoginSuccessful) {
                         SharedPreferences sp =
@@ -215,21 +219,6 @@ class _LoginState extends State<Login> {
                       }
                     }
                   },
-                  // SharedPreferences sp =
-                  //     await SharedPreferences.getInstance();
-                  // sp.setString('name', nameController.text.toString());
-                  // sp.setString('email', emailController.text.toString());
-                  // sp.setString('gender', selectedGender.toString());
-                  // sp.setString('age', ageController.text.toString());
-                  // sp.setBool('isLogin', true);
-
-                  //   if (formData.currentState!.validate()) {
-                  //     Navigator.push(
-                  //         context,
-                  //         MaterialPageRoute(
-                  //             builder: (context) => const Info()));
-                  //   }
-                  // },
                   child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: Container(
