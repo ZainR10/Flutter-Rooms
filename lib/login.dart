@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
-// import 'package:flutter/widgets.dart';
-// import 'package:flutter/rendering.dart';
-// import 'package:flutter/widgets.dart';
 import 'package:flutter_rooms/info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -63,125 +58,134 @@ class _LoginState extends State<Login> {
                   padding: const EdgeInsets.all(25),
                   child: Form(
                     key: formData,
-                    child: Column(
-                      children: [
-                        //****name*****
-                        TextFormField(
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              hintText: 'Enter your Name',
-                              hintStyle: TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white)),
-                          controller: nameController,
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return "Name field cannot be empty";
-                            }
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          //****name*****
+                          TextFormField(
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: 'Enter your Name',
+                                hintStyle: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white)),
+                            controller: nameController,
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return "Name field cannot be empty";
+                              }
 
-                            if (value.contains('@') || value.contains('.com')) {
-                              return "Invalid Name";
-                            }
-                            // Check if the string contains an integer using a regular expression
-                            if (RegExp(r'\d').hasMatch(value)) {
-                              return 'Try removing integer';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 30),
-                        //******email*****
-                        TextFormField(
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              hintText: 'Enter your Email',
-                              hintStyle: TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white)),
-                          controller: emailController,
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return "Email field cannot be empty";
-                            }
-                            if (!value.contains('@') ||
-                                !value.contains('.com')) {
-                              return "Invalid email address";
-                            }
-                            return null;
-                          },
-                        ),
+                              if (value.contains('@') ||
+                                  value.contains('.com')) {
+                                return "Invalid Name";
+                              }
+                              // Check if the string contains an integer using a regular expression
+                              if (RegExp(r'\d').hasMatch(value)) {
+                                return 'Try removing integer';
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 30),
+                          //******email*****
+                          TextFormField(
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: 'Enter your Email',
+                                hintStyle: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white)),
+                            controller: emailController,
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return "Email field cannot be empty";
+                              }
+                              if (!value.contains('@') ||
+                                  !value.contains('.com')) {
+                                return "Invalid email address";
+                              }
+                              return null;
+                            },
+                          ),
 
-                        //****age*****
-                        const SizedBox(height: 30),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              hintText: 'Enter your Age',
-                              hintStyle: TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white)),
-                          keyboardType: TextInputType.number,
-                          controller: ageController,
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return "Enter your Age";
-                            }
-                            if (value.contains('@') || value.contains('.com')) {
-                              return "Invalid email address";
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 30),
-                        // Gender dropdown
-                        DropdownButtonFormField<String>(
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              hintText: 'Please select your Gender',
-                              hintStyle: TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white)),
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please select gender';
-                            }
-                            return null;
-                          },
-                          value: selectedGender,
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              selectedGender = newValue;
-                            });
-                          },
-                          items: <String>['Male', 'Female']
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                        ),
-                        const SizedBox(height: 30),
-                        //password
-                        TextFormField(
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              hintText: 'Enter your Password',
-                              hintStyle: TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white)),
-                          controller: passwordController,
-                          validator: (String? value) {
-                            if (value == null || value.isEmpty) {
-                              return "Password field cannot be empty";
-                            }
-                            if (value.length <= 8) {
-                              return "Password length must be greater than 8";
-                            }
-                            return null;
-                          },
-                        ),
-                      ],
+                          //****age*****
+                          const SizedBox(height: 30),
+                          TextFormField(
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: 'Enter your Age',
+                                hintStyle: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white)),
+                            keyboardType: TextInputType.number,
+                            controller: ageController,
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return "Enter your Age";
+                              }
+                              if (value.contains('@') ||
+                                  value.contains('.com')) {
+                                return "Invalid email address";
+                              }
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 30),
+                          // Gender dropdown
+                          DropdownButtonFormField<String>(
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: 'Please select your Gender',
+                                hintStyle: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white)),
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please select gender';
+                              }
+                              return null;
+                            },
+                            value: selectedGender,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                selectedGender = newValue;
+                              });
+                            },
+                            items: <String>['Male', 'Female']
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+                          const SizedBox(height: 30),
+                          //password
+                          TextFormField(
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: 'Enter your Password',
+                                hintStyle: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white)),
+                            controller: passwordController,
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return "Password field cannot be empty";
+                              }
+                              if (value.length <= 8) {
+                                return "Password length must be greater than 8";
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
