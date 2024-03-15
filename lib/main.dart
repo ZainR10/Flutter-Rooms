@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_rooms/splash_screen.dart';
+//import 'package:flutter_rooms/splash_screen.dart';
+import 'package:flutter_rooms/utils/routes.dart';
+import 'package:flutter_rooms/utils/routes_name.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +36,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      initialRoute: RoutesName.SplashScreen,
+      onGenerateRoute: Routes.genrateRoute,
     );
   }
 }

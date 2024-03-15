@@ -1,9 +1,10 @@
 import 'dart:async'; // Added import for Timer
 
 import 'package:flutter/material.dart';
-import 'info.dart';
+import 'package:flutter_rooms/utils/routes_name.dart';
+// import 'info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'login.dart';
+// import 'login.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key}); // Fixed constructor syntax
@@ -27,13 +28,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
     if (isLogin) {
       Timer(const Duration(seconds: 4), () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Info()));
+        Navigator.pushNamed(context, RoutesName.Info);
       });
     } else {
       Timer(const Duration(seconds: 4), () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const Login()));
+        Navigator.pushNamed(context, RoutesName.Login);
       });
     }
   }

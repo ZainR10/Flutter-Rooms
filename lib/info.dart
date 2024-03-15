@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rooms/login.dart';
+// import 'package:flutter_rooms/login.dart';
+import 'package:flutter_rooms/utils/routes_name.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Info extends StatefulWidget {
@@ -150,8 +151,7 @@ class _InfoState extends State<Info> {
 
               sp.setBool('isLogin', false);
               // ignore: use_build_context_synchronously
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Login()));
+              Navigator.pushNamed(context, RoutesName.Login);
               // sp.remove('name');
 
               // print(sp.getInt('age')); //to check stored value.
