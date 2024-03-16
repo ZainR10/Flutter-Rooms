@@ -137,7 +137,6 @@ class _LoginState extends State<Login> {
                           const SizedBox(height: 30),
                           // Gender dropdown
                           DropdownButtonFormField<String>(
-                            style: const TextStyle(color: Colors.white),
                             decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 hintText: 'Please select your Gender',
