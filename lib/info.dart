@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_rooms/components/my_container.dart';
 // import 'package:flutter_rooms/login.dart';
 import 'package:flutter_rooms/utils/routes_name.dart';
@@ -71,11 +72,7 @@ class _InfoState extends State<Info> {
             //***email ***
             Padding(
               padding: const EdgeInsets.all(20),
-              child: Container(
-                height: 70,
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(30)),
+              child: MyContainer(
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Row(
@@ -97,11 +94,7 @@ class _InfoState extends State<Info> {
             //***age ***
             Padding(
               padding: const EdgeInsets.all(20),
-              child: Container(
-                height: 70,
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(30)),
+              child: MyContainer(
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Row(
@@ -123,11 +116,7 @@ class _InfoState extends State<Info> {
             //***gender ***
             Padding(
               padding: const EdgeInsets.all(20),
-              child: Container(
-                height: 70,
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(30)),
+              child: MyContainer(
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Row(
