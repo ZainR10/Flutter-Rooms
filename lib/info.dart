@@ -50,20 +50,28 @@ class _InfoState extends State<Info> {
             //***name***
             Padding(
               padding: const EdgeInsets.all(20),
-              child: MyContainer(
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Name:',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                          style: const TextStyle(color: Colors.white),
-                          name.toString())
-                    ],
+              child: Animate(
+                effects: const [
+                  FadeEffect(duration: Durations.long1),
+                  ThenEffect(),
+                  SlideEffect(begin: Offset(0, -1))
+                ],
+                child: MyContainer(
+                  //***name***
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Name:',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                            style: const TextStyle(color: Colors.white),
+                            name.toString())
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -72,20 +80,29 @@ class _InfoState extends State<Info> {
             //***email ***
             Padding(
               padding: const EdgeInsets.all(20),
-              child: MyContainer(
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Email:',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                          style: const TextStyle(color: Colors.white),
-                          email.toString())
-                    ],
+              child: Animate(
+                effects: const [
+                  FadeEffect(duration: Durations.long1),
+                  ThenEffect(),
+                  SlideEffect(begin: Offset(0, -2))
+                ],
+                child: MyContainer(
+                  //***email ***
+
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Email:',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                            style: const TextStyle(color: Colors.white),
+                            email.toString())
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -94,20 +111,29 @@ class _InfoState extends State<Info> {
             //***age ***
             Padding(
               padding: const EdgeInsets.all(20),
-              child: MyContainer(
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Age:',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                          style: const TextStyle(color: Colors.white),
-                          age.toString())
-                    ],
+              child: Animate(
+                effects: const [
+                  FadeEffect(duration: Durations.long1),
+                  ThenEffect(),
+                  SlideEffect(begin: Offset(0, -2))
+                ],
+                child: MyContainer(
+                  //***age ***
+
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Age:',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                            style: const TextStyle(color: Colors.white),
+                            age.toString())
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -116,20 +142,27 @@ class _InfoState extends State<Info> {
             //***gender ***
             Padding(
               padding: const EdgeInsets.all(20),
-              child: MyContainer(
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Gender:',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                          style: const TextStyle(color: Colors.white),
-                          gender.toString())
-                    ],
+              child: Animate(
+                effects: const [
+                  FadeEffect(duration: Durations.long1),
+                  ThenEffect(),
+                  SlideEffect(begin: Offset(0, -2))
+                ],
+                child: MyContainer(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Gender:',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        Text(
+                            style: const TextStyle(color: Colors.white),
+                            gender.toString())
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -152,15 +185,18 @@ class _InfoState extends State<Info> {
                   // print(sp.getString('name'));
                   // print(sp.getBool('isLogin').toString());
                 },
-                child: Container(
-                    height: 50,
-                    width: 150,
-                    decoration: BoxDecoration(
-                        color: Colors.indigo,
-                        borderRadius: BorderRadius.circular(30)),
-                    child: const Center(
-                        child: Text('Logout',
-                            style: TextStyle(color: Colors.white)))),
+                child: Animate(
+                  effects: const [FadeEffect(duration: Durations.long1)],
+                  child: Container(
+                      height: 50,
+                      width: 150,
+                      decoration: BoxDecoration(
+                          color: Colors.indigo,
+                          borderRadius: BorderRadius.circular(30)),
+                      child: const Center(
+                          child: Text('Logout',
+                              style: TextStyle(color: Colors.white)))),
+                ),
               ),
             ),
           ]),

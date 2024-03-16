@@ -28,22 +28,29 @@ class _LoginState extends State<Login> {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Center(
-            child: RichText(
-              text: const TextSpan(
-                children: [
-                  TextSpan(
-                    text: "Let's get started\n",
-                    style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ),
-                  TextSpan(
-                    text: "Enter your details to continue.",
-                    style: TextStyle(fontSize: 15, color: Colors.black),
-                  ),
-                ],
+          Animate(
+            effects: const [
+              FadeEffect(duration: Durations.long1),
+              ThenEffect(),
+              SlideEffect(begin: Offset(0, -1))
+            ],
+            child: Center(
+              child: RichText(
+                text: const TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "Let's get started\n",
+                      style: TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                    TextSpan(
+                      text: "Enter your details to continue.",
+                      style: TextStyle(fontSize: 15, color: Colors.black),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
