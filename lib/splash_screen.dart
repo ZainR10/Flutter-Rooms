@@ -1,6 +1,7 @@
 import 'dart:async'; // Added import for Timer
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_rooms/utils/routes_name.dart';
 // import 'info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,11 +28,11 @@ class _SplashScreenState extends State<SplashScreen> {
     bool isLogin = sp.getBool('isLogin') ?? false;
 
     if (isLogin) {
-      Timer(const Duration(seconds: 4), () {
+      Timer(const Duration(seconds: 2), () {
         Navigator.pushNamed(context, RoutesName.Info);
       });
     } else {
-      Timer(const Duration(seconds: 4), () {
+      Timer(const Duration(seconds: 2), () {
         Navigator.pushNamed(context, RoutesName.Login);
       });
     }
@@ -39,10 +40,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-          child: Text('Welcome',
-              style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold))),
+          child: Animate(
+        effects: const [FadeEffect()],
+        child: const Text('Welcome',
+            style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold)),
+      )),
     );
   }
 }

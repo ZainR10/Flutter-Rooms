@@ -52,9 +52,11 @@ class _InfoState extends State<Info> {
               padding: const EdgeInsets.all(20),
               child: Animate(
                 effects: const [
-                  FadeEffect(duration: Durations.long1),
+                  FadeEffect(duration: Durations.long3),
                   ThenEffect(),
-                  SlideEffect(begin: Offset(0, -1))
+                  SlideEffect(begin: Offset(0, -1)),
+                  ThenEffect(),
+                  MoveEffect(begin: Offset(0, 10))
                 ],
                 child: MyContainer(
                   //***name***
@@ -82,9 +84,11 @@ class _InfoState extends State<Info> {
               padding: const EdgeInsets.all(20),
               child: Animate(
                 effects: const [
-                  FadeEffect(duration: Durations.long1),
+                  FadeEffect(duration: Durations.long3),
                   ThenEffect(),
-                  SlideEffect(begin: Offset(0, -2))
+                  SlideEffect(begin: Offset(0, -1)),
+                  ThenEffect(),
+                  MoveEffect(begin: Offset(0, 10))
                 ],
                 child: MyContainer(
                   //***email ***
@@ -113,9 +117,11 @@ class _InfoState extends State<Info> {
               padding: const EdgeInsets.all(20),
               child: Animate(
                 effects: const [
-                  FadeEffect(duration: Durations.long1),
+                  FadeEffect(duration: Durations.long3),
                   ThenEffect(),
-                  SlideEffect(begin: Offset(0, -2))
+                  SlideEffect(begin: Offset(0, -1)),
+                  ThenEffect(),
+                  MoveEffect(begin: Offset(0, 10))
                 ],
                 child: MyContainer(
                   //***age ***
@@ -144,9 +150,11 @@ class _InfoState extends State<Info> {
               padding: const EdgeInsets.all(20),
               child: Animate(
                 effects: const [
-                  FadeEffect(duration: Durations.long1),
+                  FadeEffect(duration: Durations.long3),
                   ThenEffect(),
-                  SlideEffect(begin: Offset(0, -2))
+                  SlideEffect(begin: Offset(0, -1)),
+                  ThenEffect(),
+                  MoveEffect(begin: Offset(0, 10))
                 ],
                 child: MyContainer(
                   child: Padding(
@@ -186,7 +194,13 @@ class _InfoState extends State<Info> {
                   // print(sp.getBool('isLogin').toString());
                 },
                 child: Animate(
-                  effects: const [FadeEffect(duration: Durations.long1)],
+                  effects: const [
+                    FadeEffect(duration: Durations.long3),
+                    ThenEffect(),
+                    SlideEffect(begin: Offset(0, -1)),
+                    ThenEffect(),
+                    MoveEffect(begin: Offset(0, 10))
+                  ],
                   child: Container(
                       height: 50,
                       width: 150,

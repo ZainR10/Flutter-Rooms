@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: RoutesName.SplashScreen,
+      initialRoute: RoutesName.Login,
       onGenerateRoute: Routes.genrateRoute,
     );
   }
