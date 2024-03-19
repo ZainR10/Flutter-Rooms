@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_rooms/components/curved_container.dart';
-import 'package:flutter_rooms/components/text_formfield.dart';
+import 'package:flutter_rooms/components/custom_formfield.dart';
 // import 'package:flutter_rooms/info.dart';
 import 'package:flutter_rooms/utils/routes_name.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,10 +16,10 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final formData = GlobalKey<FormState>();
 
-  final nameController = TextEditingController();
-  final emailController = TextEditingController();
-  final ageController = TextEditingController();
-  final passwordController = TextEditingController();
+  final NameController = TextEditingController();
+  final EmailController = TextEditingController();
+  final AgeController = TextEditingController();
+  final PasswordController = TextEditingController();
 
   String? selectedGender;
   @override
@@ -88,7 +88,7 @@ class _LoginState extends State<Login> {
                             //****name*****
                             CustomFormField(
                               hintText: 'Enter your name',
-                              controller: nameController,
+                              controller: NameController,
                               validator: (String? value) {
                                 if (value == null || value.isEmpty) {
                                   return "Name field cannot be empty";
@@ -109,7 +109,7 @@ class _LoginState extends State<Login> {
                             //******email*****
                             CustomFormField(
                               hintText: 'Enter your Email',
-                              controller: emailController,
+                              controller: EmailController,
                               validator: (String? value) {
                                 if (value == null || value.isEmpty) {
                                   return "Email field cannot be empty";
@@ -127,7 +127,7 @@ class _LoginState extends State<Login> {
                             CustomFormField(
                               hintText: 'Enter your age',
                               keyboardType: TextInputType.number,
-                              controller: ageController,
+                              controller: AgeController,
                               validator: (String? value) {
                                 if (value == null || value.isEmpty) {
                                   return "Enter your Age";
@@ -174,7 +174,7 @@ class _LoginState extends State<Login> {
                             //password
                             CustomFormField(
                               hintText: 'Enter your Password',
-                              controller: passwordController,
+                              controller: PasswordController,
                               validator: (String? value) {
                                 if (value == null || value.isEmpty) {
                                   return "Password field cannot be empty";
@@ -205,11 +205,11 @@ class _LoginState extends State<Login> {
                         if (isLoginSuccessful) {
                           SharedPreferences sp =
                               await SharedPreferences.getInstance();
-                          sp.setString('name', nameController.text.toString());
+                          sp.setString('Name', NameController.text.toString());
                           sp.setString(
-                              'email', emailController.text.toString());
-                          sp.setString('gender', selectedGender.toString());
-                          sp.setString('age', ageController.text.toString());
+                              'Email', EmailController.text.toString());
+                          sp.setString('Gender', selectedGender.toString());
+                          sp.setString('age', AgeController.text.toString());
                           sp.setBool(
                               'isLogin', true); // Set login status to true
 

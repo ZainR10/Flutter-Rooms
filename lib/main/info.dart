@@ -24,9 +24,9 @@ class _InfoState extends State<Info> {
   loadData() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     setState(() {
-      name = sp.getString('name') ?? '';
-      email = sp.getString('email') ?? '';
-      age = sp.getString('age') ?? '';
+      name = sp.getString('Name') ?? '';
+      email = sp.getString('Email') ?? '';
+      age = sp.getString('Age') ?? '';
       gender = sp.getString('gender') ?? '';
     });
   }
@@ -70,7 +70,7 @@ class _InfoState extends State<Info> {
                           style: TextStyle(color: Colors.white),
                         ),
                         Text(
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.red),
                             name.toString())
                       ],
                     ),
