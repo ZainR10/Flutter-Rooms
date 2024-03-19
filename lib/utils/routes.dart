@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rooms/info.dart';
-import 'package:flutter_rooms/login.dart';
-import 'package:flutter_rooms/splash_screen.dart';
+import 'package:flutter_rooms/main/info.dart';
+import 'package:flutter_rooms/main/login.dart';
+import 'package:flutter_rooms/main/splash_screen.dart';
 import 'package:flutter_rooms/utils/routes_name.dart';
 
 class Routes {
