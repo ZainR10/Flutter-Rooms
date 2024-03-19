@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_rooms/components/curved_container.dart';
 // import 'package:flutter_rooms/info.dart';
 import 'package:flutter_rooms/utils/routes_name.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -73,12 +74,7 @@ class _LoginState extends State<Login> {
               ColorEffect(
                   duration: Durations.long1, begin: Colors.indigo.shade500)
             ],
-            child: Container(
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50)),
-                  color: Colors.black),
+            child: CurvedContainer(
               child: Column(
                 children: [
                   Padding(
