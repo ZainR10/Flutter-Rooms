@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_rooms/components/curved_container.dart';
+import 'package:flutter_rooms/components/text_formfield.dart';
 // import 'package:flutter_rooms/info.dart';
 import 'package:flutter_rooms/utils/routes_name.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -85,14 +86,8 @@ class _LoginState extends State<Login> {
                         child: Column(
                           children: [
                             //****name*****
-                            TextFormField(
-                              style: const TextStyle(color: Colors.white),
-                              decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  hintText: 'Enter your Name',
-                                  hintStyle: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.white)),
+                            CustomFormField(
+                              hintText: 'Enter your name',
                               controller: nameController,
                               validator: (String? value) {
                                 if (value == null || value.isEmpty) {
@@ -112,14 +107,8 @@ class _LoginState extends State<Login> {
                             ),
                             const SizedBox(height: 30),
                             //******email*****
-                            TextFormField(
-                              style: const TextStyle(color: Colors.white),
-                              decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  hintText: 'Enter your Email',
-                                  hintStyle: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.white)),
+                            CustomFormField(
+                              hintText: 'Enter your Email',
                               controller: emailController,
                               validator: (String? value) {
                                 if (value == null || value.isEmpty) {
@@ -135,14 +124,8 @@ class _LoginState extends State<Login> {
 
                             //****age*****
                             const SizedBox(height: 30),
-                            TextFormField(
-                              style: const TextStyle(color: Colors.white),
-                              decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  hintText: 'Enter your Age',
-                                  hintStyle: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.white)),
+                            CustomFormField(
+                              hintText: 'Enter your age',
                               keyboardType: TextInputType.number,
                               controller: ageController,
                               validator: (String? value) {
@@ -189,14 +172,8 @@ class _LoginState extends State<Login> {
                             ),
                             const SizedBox(height: 30),
                             //password
-                            TextFormField(
-                              style: const TextStyle(color: Colors.white),
-                              decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  hintText: 'Enter your Password',
-                                  hintStyle: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.white)),
+                            CustomFormField(
+                              hintText: 'Enter your Password',
                               controller: passwordController,
                               validator: (String? value) {
                                 if (value == null || value.isEmpty) {

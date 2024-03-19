@@ -54,7 +54,7 @@ class _InfoState extends State<Info> {
                 effects: const [
                   FadeEffect(duration: Durations.long3),
                   ThenEffect(),
-                  SlideEffect(begin: Offset(0, -1)),
+                  SlideEffect(begin: Offset(0, -0.5)),
                   ThenEffect(),
                   MoveEffect(begin: Offset(0, 10))
                 ],
