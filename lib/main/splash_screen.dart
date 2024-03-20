@@ -43,9 +43,18 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
           child: Animate(
-        effects: const [FadeEffect()],
+        effects: const [
+          FadeEffect(duration: Durations.long3),
+          ThenEffect(),
+          SlideEffect(begin: Offset(0, -1)),
+          ThenEffect(),
+          MoveEffect(begin: Offset(0, 50)),
+        ],
         child: const Text('Welcome',
-            style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold)),
+            style: TextStyle(
+                fontSize: 50,
+                color: Colors.indigo,
+                fontWeight: FontWeight.bold)),
       )),
     );
   }

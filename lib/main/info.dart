@@ -35,14 +35,15 @@ class _InfoState extends State<Info> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.indigo[50],
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text(
           'User Info',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white70),
         ),
         centerTitle: true,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.indigo[100],
       ),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.end,
