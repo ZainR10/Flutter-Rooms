@@ -28,11 +28,11 @@ class _SplashScreenState extends State<SplashScreen> {
     bool isLogin = sp.getBool('isLogin') ?? false;
 
     if (isLogin) {
-      Timer(const Duration(seconds: 2), () {
+      Timer(const Duration(seconds: 4), () {
         Navigator.pushNamed(context, RoutesName.Info);
       });
     } else {
-      Timer(const Duration(seconds: 2), () {
+      Timer(const Duration(seconds: 4), () {
         Navigator.pushNamed(context, RoutesName.Login);
       });
     }
