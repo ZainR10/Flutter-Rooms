@@ -10,7 +10,7 @@ class MyContainer extends StatelessWidget {
     return Container(
       height: 70,
       decoration: BoxDecoration(
-        color: Colors.black,
+        color: Colors.black87,
         borderRadius: BorderRadius.circular(10),
       ),
       child: child, // Ensure the child is rendered within the container
