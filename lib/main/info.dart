@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_rooms/components/custom_button.dart';
 import 'package:flutter_rooms/components/my_container.dart';
 // import 'package:flutter_rooms/login.dart';
 import 'package:flutter_rooms/utils/routes_name.dart';
@@ -27,7 +28,7 @@ class _InfoState extends State<Info> {
       name = sp.getString('Name') ?? '';
       email = sp.getString('Email') ?? '';
       age = sp.getString('Age') ?? '';
-      gender = sp.getString('gender') ?? '';
+      gender = sp.getString('Gender') ?? '';
     });
   }
 
@@ -70,7 +71,7 @@ class _InfoState extends State<Info> {
                           style: TextStyle(color: Colors.white),
                         ),
                         Text(
-                            style: const TextStyle(color: Colors.red),
+                            style: const TextStyle(color: Colors.white),
                             name.toString())
                       ],
                     ),
@@ -201,13 +202,8 @@ class _InfoState extends State<Info> {
                     ThenEffect(),
                     MoveEffect(begin: Offset(0, 10))
                   ],
-                  child: Container(
-                      height: 50,
-                      width: 150,
-                      decoration: BoxDecoration(
-                          color: Colors.indigo,
-                          borderRadius: BorderRadius.circular(30)),
-                      child: const Center(
+                  child: const CustomButton(
+                      child: Center(
                           child: Text('Logout',
                               style: TextStyle(color: Colors.white)))),
                 ),

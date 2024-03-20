@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_rooms/components/curved_container.dart';
+import 'package:flutter_rooms/components/custom_button.dart';
 import 'package:flutter_rooms/components/custom_formfield.dart';
 // import 'package:flutter_rooms/info.dart';
 import 'package:flutter_rooms/utils/routes_name.dart';
@@ -16,10 +17,10 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final formData = GlobalKey<FormState>();
 
-  final NameController = TextEditingController();
-  final EmailController = TextEditingController();
-  final AgeController = TextEditingController();
-  final PasswordController = TextEditingController();
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final ageController = TextEditingController();
+  final passwordController = TextEditingController();
 
   String? selectedGender;
   @override
@@ -88,7 +89,7 @@ class _LoginState extends State<Login> {
                             //****name*****
                             CustomFormField(
                               hintText: 'Enter your name',
-                              controller: NameController,
+                              controller: nameController,
                               validator: (String? value) {
                                 if (value == null || value.isEmpty) {
                                   return "Name field cannot be empty";
@@ -109,7 +110,7 @@ class _LoginState extends State<Login> {
                             //******email*****
                             CustomFormField(
                               hintText: 'Enter your Email',
-                              controller: EmailController,
+                              controller: emailController,
                               validator: (String? value) {
                                 if (value == null || value.isEmpty) {
                                   return "Email field cannot be empty";
@@ -127,7 +128,7 @@ class _LoginState extends State<Login> {
                             CustomFormField(
                               hintText: 'Enter your age',
                               keyboardType: TextInputType.number,
-                              controller: AgeController,
+                              controller: ageController,
                               validator: (String? value) {
                                 if (value == null || value.isEmpty) {
                                   return "Enter your Age";
@@ -174,7 +175,7 @@ class _LoginState extends State<Login> {
                             //password
                             CustomFormField(
                               hintText: 'Enter your Password',
-                              controller: PasswordController,
+                              controller: passwordController,
                               validator: (String? value) {
                                 if (value == null || value.isEmpty) {
                                   return "Password field cannot be empty";
@@ -205,11 +206,11 @@ class _LoginState extends State<Login> {
                         if (isLoginSuccessful) {
                           SharedPreferences sp =
                               await SharedPreferences.getInstance();
-                          sp.setString('Name', NameController.text.toString());
+                          sp.setString('Name', nameController.text.toString());
                           sp.setString(
-                              'Email', EmailController.text.toString());
+                              'Email', emailController.text.toString());
                           sp.setString('Gender', selectedGender.toString());
-                          sp.setString('age', AgeController.text.toString());
+                          sp.setString('Age', ageController.text.toString());
                           sp.setBool(
                               'isLogin', true); // Set login status to true
 
@@ -217,18 +218,12 @@ class _LoginState extends State<Login> {
                         }
                       }
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.indigo),
-                        height: 50,
-                        width: double.infinity,
-                        // color: Colors.black,
-                        child: const Center(
+                    child: const Padding(
+                      padding: EdgeInsets.all(25),
+                      child: CustomButton(
+                        child: Center(
                           child: Text(
-                            'Login',
+                            'Log in',
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                         ),
