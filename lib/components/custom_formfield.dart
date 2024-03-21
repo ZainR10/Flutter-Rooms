@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CustomFormField extends StatelessWidget {
-  final GlobalKey<FormState>? key;
+  // final GlobalKey<FormState>? key;
   final TextEditingController? controller;
   final FormFieldValidator<String>? validator;
   final String? hintText;
   final TextInputType? keyboardType;
   const CustomFormField({
-    this.key,
+    // this.key,
     this.keyboardType,
     this.hintText,
     this.controller,
@@ -16,22 +16,19 @@ class CustomFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: key,
-      child: TextFormField(
-        style: const TextStyle(color: Colors.white),
-        controller: controller,
-        keyboardType: keyboardType,
-        decoration: InputDecoration(
-          border: const OutlineInputBorder(),
-          hintText: hintText,
-          hintStyle: const TextStyle(
-            fontWeight: FontWeight.normal,
-            color: Colors.white,
-          ),
+    return TextFormField(
+      style: const TextStyle(color: Colors.white),
+      controller: controller,
+      keyboardType: keyboardType,
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(),
+        hintText: hintText,
+        hintStyle: const TextStyle(
+          fontWeight: FontWeight.normal,
+          color: Colors.white,
         ),
-        validator: validator,
       ),
+      validator: validator,
     );
   }
 }
