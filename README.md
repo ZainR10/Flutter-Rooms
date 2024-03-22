@@ -1,14 +1,9 @@
-# flutter_rooms
+In this project i have create a login screen and and a user info screen where i have retrived data from login screen
+using shared prefrences package.
 
-This is a multi role base app which have multiple types of user's
+![Capture](https://github.com/ZainR10/Flutter-Rooms/assets/128054811/8619376e-edd1-4e33-a08e-062b352c47fb),
 
-## Getting Started
+![user info](https://github.com/ZainR10/Flutter-Rooms/assets/128054811/82f36831-bf64-430a-9425-9a04da7b9595),
 
-in this project i have managed user session and user type since it have multiple types of user's.
+![validate](https://github.com/ZainR10/Flutter-Rooms/assets/128054811/1c5e16b1-4198-498b-893b-44b3442bd67d)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
